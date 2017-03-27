@@ -64,9 +64,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         if (field == self.textFieldEmail) {
             field?.returnKeyType = .next
             field?.keyboardType = .emailAddress
+            field?.tag = 1
         } else {
             field?.returnKeyType = .done
             field?.isSecureTextEntry = true
+            field?.tag = 2
         }
     }
     
@@ -76,14 +78,28 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func registerForKeyboardNotifications(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWasShown(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillBeHidden(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
     }
     
     func deregisterFromKeyboardNotifications(){
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.UIKeyboardWillShow,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.UIKeyboardWillHide,
+                                                  object: nil)
     }
+    
+    
+    //MARK: - Notifications
+    
     
     func keyboardWasShown(notification: NSNotification){
         //Need to calculate keyboard exact size due to Apple suggestions
@@ -114,6 +130,26 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         self.scrollView.isScrollEnabled = false
     }
+    
+    
+    //MARK: - UITextField delegate methods
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTage = textField.tag + 1;
+        // Try to find next responder
+        let nextResponder=textField.superview?.viewWithTag(nextTage) as UIResponder!
+        
+        if (nextResponder != nil) {
+            // Found next responder, so set it.
+            nextResponder?.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+    
     
 
 }
