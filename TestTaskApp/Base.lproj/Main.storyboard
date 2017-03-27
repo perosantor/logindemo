@@ -83,6 +83,12 @@
                             <constraint firstItem="OLY-xq-uZI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lG8-Bb-g8g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonLogIn" destination="hYe-hJ-tKs" id="0pZ-bn-UQo"/>
+                        <outlet property="scrollView" destination="OLY-xq-uZI" id="45i-cT-ugJ"/>
+                        <outlet property="textFieldEmail" destination="QiV-Y6-LHL" id="Noq-GP-7ka"/>
+                        <outlet property="textFieldPassword" destination="Rn1-Mt-Bgz" id="R8z-VI-niH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
