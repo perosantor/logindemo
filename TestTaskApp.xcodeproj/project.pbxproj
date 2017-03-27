@@ -14,6 +14,11 @@
 		08B944661E890CE1001B201B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08B944641E890CE1001B201B /* LaunchScreen.storyboard */; };
 		08B944711E890CE1001B201B /* TestTaskAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B944701E890CE1001B201B /* TestTaskAppTests.swift */; };
 		08B9447C1E890CE1001B201B /* TestTaskAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B9447B1E890CE1001B201B /* TestTaskAppUITests.swift */; };
+		08B9448A1E893E2D001B201B /* CommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B944891E893E2D001B201B /* CommunicationService.swift */; };
+		08B9448E1E893F74001B201B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B9448B1E893F74001B201B /* Roboto-Light.ttf */; };
+		08B9448F1E893F74001B201B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B9448C1E893F74001B201B /* Roboto-Medium.ttf */; };
+		08B944901E893F74001B201B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B9448D1E893F74001B201B /* Roboto-Regular.ttf */; };
+		08B944921E893FBA001B201B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B944911E893FBA001B201B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		08B944771E890CE1001B201B /* TestTaskAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTaskAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B9447B1E890CE1001B201B /* TestTaskAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTaskAppUITests.swift; sourceTree = "<group>"; };
 		08B9447D1E890CE1001B201B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08B944891E893E2D001B201B /* CommunicationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationService.swift; sourceTree = "<group>"; };
+		08B9448B1E893F74001B201B /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		08B9448C1E893F74001B201B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		08B9448D1E893F74001B201B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		08B944911E893FBA001B201B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,11 @@
 				08B944621E890CE1001B201B /* Assets.xcassets */,
 				08B944641E890CE1001B201B /* LaunchScreen.storyboard */,
 				08B944671E890CE1001B201B /* Info.plist */,
+				08B944891E893E2D001B201B /* CommunicationService.swift */,
+				08B9448B1E893F74001B201B /* Roboto-Light.ttf */,
+				08B9448C1E893F74001B201B /* Roboto-Medium.ttf */,
+				08B9448D1E893F74001B201B /* Roboto-Regular.ttf */,
+				08B944911E893FBA001B201B /* Constants.swift */,
 			);
 			path = TestTaskApp;
 			sourceTree = "<group>";
@@ -235,8 +250,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B944901E893F74001B201B /* Roboto-Regular.ttf in Resources */,
+				08B9448F1E893F74001B201B /* Roboto-Medium.ttf in Resources */,
 				08B944661E890CE1001B201B /* LaunchScreen.storyboard in Resources */,
 				08B944631E890CE1001B201B /* Assets.xcassets in Resources */,
+				08B9448E1E893F74001B201B /* Roboto-Light.ttf in Resources */,
 				08B944611E890CE1001B201B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +282,8 @@
 			files = (
 				08B9445E1E890CE1001B201B /* LogInViewController.swift in Sources */,
 				08B9445C1E890CE1001B201B /* AppDelegate.swift in Sources */,
+				08B9448A1E893E2D001B201B /* CommunicationService.swift in Sources */,
+				08B944921E893FBA001B201B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
