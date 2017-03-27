@@ -107,17 +107,11 @@
 		08B9445A1E890CE1001B201B /* TestTaskApp */ = {
 			isa = PBXGroup;
 			children = (
-				08B9445B1E890CE1001B201B /* AppDelegate.swift */,
-				08B9445D1E890CE1001B201B /* LogInViewController.swift */,
-				08B9445F1E890CE1001B201B /* Main.storyboard */,
-				08B944621E890CE1001B201B /* Assets.xcassets */,
-				08B944641E890CE1001B201B /* LaunchScreen.storyboard */,
-				08B944671E890CE1001B201B /* Info.plist */,
-				08B944891E893E2D001B201B /* CommunicationService.swift */,
-				08B9448B1E893F74001B201B /* Roboto-Light.ttf */,
-				08B9448C1E893F74001B201B /* Roboto-Medium.ttf */,
-				08B9448D1E893F74001B201B /* Roboto-Regular.ttf */,
-				08B944911E893FBA001B201B /* Constants.swift */,
+				08B944941E894971001B201B /* Application */,
+				08B944931E89495F001B201B /* Controllers */,
+				08B944951E89497E001B201B /* Resources */,
+				08B944961E89498D001B201B /* Services */,
+				08B944971E894994001B201B /* Helpers */,
 			);
 			path = TestTaskApp;
 			sourceTree = "<group>";
@@ -138,6 +132,52 @@
 				08B9447D1E890CE1001B201B /* Info.plist */,
 			);
 			path = TestTaskAppUITests;
+			sourceTree = "<group>";
+		};
+		08B944931E89495F001B201B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				08B9445D1E890CE1001B201B /* LogInViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		08B944941E894971001B201B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				08B9445B1E890CE1001B201B /* AppDelegate.swift */,
+				08B9445F1E890CE1001B201B /* Main.storyboard */,
+				08B944641E890CE1001B201B /* LaunchScreen.storyboard */,
+				08B944671E890CE1001B201B /* Info.plist */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		08B944951E89497E001B201B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				08B944621E890CE1001B201B /* Assets.xcassets */,
+				08B9448B1E893F74001B201B /* Roboto-Light.ttf */,
+				08B9448C1E893F74001B201B /* Roboto-Medium.ttf */,
+				08B9448D1E893F74001B201B /* Roboto-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08B944961E89498D001B201B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				08B944891E893E2D001B201B /* CommunicationService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		08B944971E894994001B201B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				08B944911E893FBA001B201B /* Constants.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

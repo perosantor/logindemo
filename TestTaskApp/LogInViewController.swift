@@ -17,7 +17,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
-    
     @IBOutlet weak var buttonLogIn: UIButton!
     
     
@@ -29,6 +28,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         self.setUp(textField: self.textFieldEmail)
         self.setUp(textField: self.textFieldPassword)
+        
+        self.buttonLogIn.setTitle("Log In", for: .normal)
+        self.buttonLogIn.titleLabel?.font = UIFont(name: Constants.Font.RobotoMedium, size: 18)
+        self.buttonLogIn.setTitleColor(UIColor.red, for: .normal)
         
         let tapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(self.dismissKeyboard(gesture:)))
@@ -48,7 +51,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -66,7 +68,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             field?.keyboardType = .emailAddress
             field?.tag = 1
         } else {
-            field?.returnKeyType = .done
+            field?.returnKeyType = .go
             field?.isSecureTextEntry = true
             field?.tag = 2
         }
@@ -102,7 +104,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     func keyboardWasShown(notification: NSNotification){
-        //Need to calculate keyboard exact size due to Apple suggestions
+        //Need to calculate keyboard exact size
         self.scrollView.isScrollEnabled = true
         var info = notification.userInfo!
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
@@ -113,7 +115,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         var aRect : CGRect = self.view.frame
         aRect.size.height -= keyboardSize!.height
-        if let activeField = self.buttonLogIn {
+        if let activeField = self.textFieldPassword {
             if (!aRect.contains(activeField.frame.origin)){
                 self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
             }
@@ -130,7 +132,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         self.scrollView.isScrollEnabled = false
     }
-    
+   
     
     //MARK: - UITextField delegate methods
     
@@ -146,11 +148,23 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         } else {
             // Not found, so remove keyboard
             textField.resignFirstResponder()
+            self.handleTapOnLogInButton(Any.self)
         }
         return false
     }
     
     
-
+    //MARK: - Actions
+    
+    
+    @IBAction func handleTapOnLogInButton(_ sender: Any) {
+        print("Log in")
+        CommunicationService.sharedInstace.logInWith(email: "", password: "") {
+            (response: String?) in
+            print("got response")
+        }
+        
+    }
+  
 }
 

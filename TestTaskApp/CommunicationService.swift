@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct CommunicationService {
+    static let sharedInstace = CommunicationService()
+    
+    let newsUrl = "http://www.dzsabac.org.rs/android/droid.php"
+    
+    func logInWith(email:String?, password:String?, completion: @escaping (_ response:String?) -> ()) {
+        completion("accessToken")
+    }
+}
