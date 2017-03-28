@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
 
@@ -36,7 +37,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let tapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(self.dismissKeyboard(gesture:)))
         self.view.addGestureRecognizer(tapGesture)
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        SVProgressHUD.setFont(UIFont(name: Constants.Font.RobotoLight, size: 15))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,12 +161,18 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func handleTapOnLogInButton(_ sender: Any) {
-        print("Log in")
-        CommunicationService.sharedInstace.logInWith(email: "", password: "") {
-            (response: String?) in
-            print("got response")
+        let email = self.textFieldEmail.text!
+        let password = self.textFieldPassword.text!
+        if email.isEmpty {
+            SVProgressHUD .showInfo(withStatus: "Email field is empty")
+        } else if password.isEmpty {
+            SVProgressHUD .showInfo(withStatus: "Password field is empty")
+        } else {
+            CommunicationService.sharedInstace.logInWith(email: email, password: password) {
+                (response: String?) in
+                print("\(response)")
+            }
         }
-        
     }
   
 }
