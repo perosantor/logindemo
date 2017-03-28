@@ -31,8 +31,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.setUp(textField: self.textFieldPassword)
         
         self.buttonLogIn.setTitle("Log In", for: .normal)
-        self.buttonLogIn.titleLabel?.font = UIFont(name: Constants.Font.RobotoMedium, size: 18)
-        self.buttonLogIn.setTitleColor(UIColor.red, for: .normal)
+        self.buttonLogIn.titleLabel?.font = UIFont(name: Constants.Font.RobotoMedium, size: 20)
+        self.buttonLogIn.setTitleColor(UIColor.gray, for: .normal)
         
         let tapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(self.dismissKeyboard(gesture:)))
@@ -163,14 +163,20 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func handleTapOnLogInButton(_ sender: Any) {
         let email = self.textFieldEmail.text!
         let password = self.textFieldPassword.text!
+        
         if email.isEmpty {
             SVProgressHUD .showInfo(withStatus: "Email field is empty")
         } else if password.isEmpty {
             SVProgressHUD .showInfo(withStatus: "Password field is empty")
         } else {
             CommunicationService.sharedInstace.logInWith(email: email, password: password) {
-                (response: String?) in
-                print("\(response)")
+                (response: String?, succeeded) in
+                if succeeded {
+                    print("Returned value of access token: \(response)")
+                    //access_token is obtained, save it and load next screen
+                } else {
+                    SVProgressHUD .showInfo(withStatus: response)
+                }
             }
         }
     }
