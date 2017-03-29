@@ -176,7 +176,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     print("Returned value of access token: \(response)")
                     SVProgressHUD.showSuccess(withStatus: "Logged In")
                     //access_token is obtained, save it and load next screen
-                    UserDefaults.standard.set(response, forKey: "access_token")
+                    UserDefaults.standard.set(response, forKey: Constants.Keys.AccessToken)
                     
                 } else {
                     SVProgressHUD.showError(withStatus: response)

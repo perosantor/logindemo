@@ -16,6 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let token = UserDefaults.standard.object(forKey: Constants.Keys.AccessToken) as? String ?? nil
+        print("TOKEN: \(token)")
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let initialViewController:UIViewController
+        
+        if token == nil {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.StoryboardID.LogInVC)
+        } else {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.StoryboardID.DetailsVC)
+        }
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
+        
+        
         return true
     }
 

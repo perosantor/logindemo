@@ -15,4 +15,13 @@ struct Constants {
         static let RobotoRegular = "Roboto-Regular"
         static let RobotoMedium = "Roboto-Medium"
     }
+    
+    struct Keys {
+        static let AccessToken = "access_token"
+    }
+    
+    struct StoryboardID {
+        static let LogInVC = "idLogInViewController"
+        static let DetailsVC = "idDetailsViewController"
+    }
 }

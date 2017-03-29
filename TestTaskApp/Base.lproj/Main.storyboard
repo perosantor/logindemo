@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="TestTaskApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="idLogInViewController" id="BYZ-38-t0r" customClass="LogInViewController" customModule="TestTaskApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -86,16 +86,36 @@
                             <constraint firstItem="zOS-QI-uhD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="yQW-io-jAe"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="rlQ-1d-5uA"/>
                     <connections>
                         <outlet property="buttonLogIn" destination="hYe-hJ-tKs" id="0pZ-bn-UQo"/>
                         <outlet property="scrollView" destination="OLY-xq-uZI" id="45i-cT-ugJ"/>
                         <outlet property="textFieldEmail" destination="QiV-Y6-LHL" id="Noq-GP-7ka"/>
                         <outlet property="textFieldPassword" destination="Rn1-Mt-Bgz" id="R8z-VI-niH"/>
+                        <segue destination="iVn-Ro-5Ew" kind="show" identifier="showDetailsVC" id="nLG-bQ-3vN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="146"/>
+            <point key="canvasLocation" x="956" y="145.27736131934034"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="PE2-WK-1NR">
+            <objects>
+                <viewController storyboardIdentifier="idDetailsViewController" id="iVn-Ro-5Ew" customClass="DetailsViewController" customModule="TestTaskApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dp1-hY-4Rj"/>
+                        <viewControllerLayoutGuide type="bottom" id="QGF-kT-Ije"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X9h-n0-nOy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1g5-tI-39E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1745" y="145"/>
         </scene>
     </scenes>
 </document>
