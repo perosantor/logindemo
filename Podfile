@@ -9,6 +9,7 @@ target 'TestTaskApp' do
 
   pod 'ReachabilitySwift', '~> 3'
   pod 'SVProgressHUD'
+  pod 'SDWebImage', '~>3.8'
 
   target 'TestTaskAppTests' do
     inherit! :search_paths

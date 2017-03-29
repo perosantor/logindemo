@@ -1,15 +1,20 @@
 PODS:
   - ReachabilitySwift (3)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - ReachabilitySwift (~> 3)
+  - SDWebImage (~> 3.8)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: c994b6be384ed2946a35e5a75c00ccf154ab4b78
+PODFILE CHECKSUM: f84cb28bca433c3b1125e3236b82c2ca9a4545d1
 
 COCOAPODS: 1.1.1
