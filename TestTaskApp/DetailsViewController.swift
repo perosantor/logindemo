@@ -11,11 +11,24 @@ import SVProgressHUD
 
 class DetailsViewController: UIViewController {
 
+    
+    //MARK: Outlets
+    
+    @IBOutlet weak var imageViewThumbnail: UIImageView!
+    
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelWelcomeMessage: UILabel!
+    @IBOutlet weak var labelOpenedStatus: UILabel!
+    @IBOutlet weak var labelIntro: UILabel!
+    
+    
+    //MARK: - Lifecycle
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
         CommunicationService.sharedInstace.fetchRestaurantInformation { (restaurant, errorMessage) in
-            
             if errorMessage != nil {
                 SVProgressHUD.showError(withStatus: errorMessage!)
             } else {
@@ -27,13 +40,22 @@ class DetailsViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    //MARK: Actions
+    
+    
+    @IBAction func handleTapOnLogoutButton(_ sender: UIBarButtonItem) {
+        Utilities.removeAccessToken()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.setInitialViewController()
+    }
+    
     
 
     /*

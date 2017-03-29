@@ -188,8 +188,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RTG-q9-FUx">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="TGw-wr-V3h"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="TGw-wr-V3h">
+                            <connections>
+                                <action selector="handleTapOnLogoutButton:" destination="iVn-Ro-5Ew" id="zUL-KL-3e6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageViewThumbnail" destination="ytF-z3-mlx" id="BEx-lf-14z"/>
+                        <outlet property="labelIntro" destination="hJx-T7-1rS" id="xJL-KV-CpP"/>
+                        <outlet property="labelName" destination="jYA-2b-s1w" id="COK-gA-BLA"/>
+                        <outlet property="labelOpenedStatus" destination="OYe-4Y-Idn" id="K97-n2-ZrK"/>
+                        <outlet property="labelWelcomeMessage" destination="veH-Mv-BTt" id="8C2-oS-zwB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1g5-tI-39E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

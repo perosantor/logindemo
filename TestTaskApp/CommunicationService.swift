@@ -18,7 +18,7 @@ struct CommunicationService {
         } else {
             let baseURL = "https://usemenu.com/playground/public/api/v2/customer/login?app_version=2.7.1"
             let jsonBody: [String: Any] = ["email": email,
-                                       "password": password]
+                                           "password": password]
             let jsonBodyData = try? JSONSerialization.data(withJSONObject: jsonBody)
             
             var request = URLRequest(url: URL(string: baseURL)!)
@@ -76,8 +76,9 @@ struct CommunicationService {
             completion(nil, "No Internet access")
         } else {
             if let token:String = Utilities.getAccessToken() {
+                print(token)
                 let baseURL = "https://usemenu.com/playground/public/api/v2/restaurant/info?app_version=2.7.1"
-                let jsonBody: [String: Any] = ["table_beacon": ["major" : "5", "minor" : "1"],
+                let jsonBody: [String: Any] = ["table_beacon": ["major": 5, "minor": 1],
                                                "access_token": token]
                 
                 let jsonBodyData = try? JSONSerialization.data(withJSONObject: jsonBody)

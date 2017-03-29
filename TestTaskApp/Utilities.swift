@@ -14,4 +14,8 @@ class Utilities: NSObject {
         return UserDefaults.standard.object(forKey: Constants.Keys.AccessToken) as? String ?? nil
     }
     
+    class func removeAccessToken() {
+        UserDefaults.standard.removeObject(forKey: Constants.Keys.AccessToken)
+    }
+    
 }

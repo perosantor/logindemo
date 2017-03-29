@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: - Utilities
     
-    private func setInitialViewController() {
+    public func setInitialViewController() {
         let token = UserDefaults.standard.object(forKey: Constants.Keys.AccessToken) as? String ?? nil
         print("TOKEN: \(token)")
         
