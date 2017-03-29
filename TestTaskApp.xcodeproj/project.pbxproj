@@ -19,6 +19,7 @@
 		08B9448F1E893F74001B201B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B9448C1E893F74001B201B /* Roboto-Medium.ttf */; };
 		08B944901E893F74001B201B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B9448D1E893F74001B201B /* Roboto-Regular.ttf */; };
 		08B944921E893FBA001B201B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B944911E893FBA001B201B /* Constants.swift */; };
+		08B944991E8B9D52001B201B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B944981E8B9D52001B201B /* DetailsViewController.swift */; };
 		20B80987EDFCE597AC708EC7 /* Pods_TestTaskAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60B5E91DF46261A9DFAD974 /* Pods_TestTaskAppTests.framework */; };
 		331A812D86531BC8DF7F8843 /* Pods_TestTaskAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BBD2ED64F865F12D569BE1E /* Pods_TestTaskAppUITests.framework */; };
 		B894F6D354E11A034C7987E9 /* Pods_TestTaskApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB6F29DC03A1C37594BFFD8 /* Pods_TestTaskApp.framework */; };
@@ -60,6 +61,7 @@
 		08B9448C1E893F74001B201B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		08B9448D1E893F74001B201B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		08B944911E893FBA001B201B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		08B944981E8B9D52001B201B /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		0B55A31086BD46A631DC8E1B /* Pods-TestTaskApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTaskApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestTaskApp/Pods-TestTaskApp.release.xcconfig"; sourceTree = "<group>"; };
 		0DB6F29DC03A1C37594BFFD8 /* Pods_TestTaskApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTaskApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		365CE40CE19B61A34B98AC33 /* Pods-TestTaskAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTaskAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestTaskAppUITests/Pods-TestTaskAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				08B9445D1E890CE1001B201B /* LogInViewController.swift */,
+				08B944981E8B9D52001B201B /* DetailsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -422,7 +425,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6C49A1946C2F2C92678931E2 /* [CP] Copy Pods Resources */ = {
@@ -467,7 +470,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B2A17A65C8CF5359BFD4C89A /* [CP] Embed Pods Frameworks */ = {
@@ -497,7 +500,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -511,6 +514,7 @@
 				08B9445C1E890CE1001B201B /* AppDelegate.swift in Sources */,
 				08B9448A1E893E2D001B201B /* CommunicationService.swift in Sources */,
 				08B944921E893FBA001B201B /* Constants.swift in Sources */,
+				08B944991E8B9D52001B201B /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,6 +771,7 @@
 				08B944821E890CE1001B201B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		08B944831E890CE1001B201B /* Build configuration list for PBXNativeTarget "TestTaskAppTests" */ = {
 			isa = XCConfigurationList;
@@ -775,6 +780,7 @@
 				08B944851E890CE1001B201B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		08B944861E890CE1001B201B /* Build configuration list for PBXNativeTarget "TestTaskAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -783,6 +789,7 @@
 				08B944881E890CE1001B201B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

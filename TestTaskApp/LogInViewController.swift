@@ -165,17 +165,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let password = self.textFieldPassword.text!
         
         if email.isEmpty {
-            SVProgressHUD .showInfo(withStatus: "Email field is empty")
+            SVProgressHUD.showInfo(withStatus: "Email field is empty")
         } else if password.isEmpty {
-            SVProgressHUD .showInfo(withStatus: "Password field is empty")
+            SVProgressHUD.showInfo(withStatus: "Password field is empty")
         } else {
+            SVProgressHUD.show()
             CommunicationService.sharedInstace.logInWith(email: email, password: password) {
                 (response: String?, succeeded) in
                 if succeeded {
                     print("Returned value of access token: \(response)")
+                    SVProgressHUD.showSuccess(withStatus: "Logged In")
                     //access_token is obtained, save it and load next screen
+                    UserDefaults.standard.set(response, forKey: "access_token")
+                    
                 } else {
-                    SVProgressHUD .showInfo(withStatus: response)
+                    SVProgressHUD.showError(withStatus: response)
                 }
             }
         }
