@@ -14,6 +14,7 @@ class DetailsViewController: UIViewController {
     
     //MARK: Outlets
     
+    
     @IBOutlet weak var imageViewThumbnail: UIImageView!
     
     @IBOutlet weak var labelName: UILabel!
@@ -21,12 +22,22 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var labelOpenedStatus: UILabel!
     @IBOutlet weak var labelIntro: UILabel!
     
+    @IBOutlet weak var constraintImageViewHeight: NSLayoutConstraint!
     
     //MARK: - Lifecycle
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.setUp(label: labelName)
+        self.setUp(label: labelIntro)
+        self.setUp(label: labelOpenedStatus)
+        self.setUp(label: labelWelcomeMessage)
+        
+        self.constraintImageViewHeight.constant = UIScreen.main.bounds.width * 2/3
+        
         SVProgressHUD.show()
         CommunicationService.sharedInstace.fetchRestaurantInformation { (restaurant, errorMessage) in
             if errorMessage != nil {
@@ -57,7 +68,15 @@ class DetailsViewController: UIViewController {
     }
     
     
-
+    //MARK: - Utilities
+    
+    
+    private func setUp(label: UILabel) {
+        label.font = UIFont(name: Constants.Font.RobotoLight, size: 18)
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -35,7 +35,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.buttonLogIn.setTitleColor(UIColor.gray, for: .normal)
         
         let tapGesture = UITapGestureRecognizer(target: self,
-                                                action: #selector(self.dismissKeyboard(gesture:)))
+                                                action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
         
@@ -78,7 +78,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func dismissKeyboard(gesture: UITapGestureRecognizer) {
+    func dismissKeyboard() {
         self.textFieldEmail.resignFirstResponder()
         self.textFieldPassword.resignFirstResponder()
     }
@@ -162,6 +162,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func handleTapOnLogInButton(_ sender: Any) {
+        self.dismissKeyboard()
+        
         let email = self.textFieldEmail.text!
         let password = self.textFieldPassword.text!
         
@@ -178,6 +180,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     SVProgressHUD.showSuccess(withStatus: "Logged In")
                     //access_token is obtained, save it and load next screen
                     UserDefaults.standard.set(response, forKey: Constants.Keys.AccessToken)
+                    
+                    DispatchQueue.main.sync {
+                        self.performSegue(withIdentifier: "showDetailsVC", sender: nil)
+                    }
                     
                 } else {
                     SVProgressHUD.showError(withStatus: response)
