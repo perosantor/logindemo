@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 
+
 class DetailsViewController: UIViewController {
 
     
@@ -40,6 +41,12 @@ class DetailsViewController: UIViewController {
         
         SVProgressHUD.show()
         CommunicationService.sharedInstace.fetchRestaurantInformation { (restaurant, errorMessage) in
+            
+            //test
+            let img = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR8UiOrCXg_pwp-fL4U8ynAiGKjMG5tOPK4XE3ffYzaf6uetsSbdg"
+            let imgUrl = URL(string: img)
+            self.imageViewThumbnail.sd_setImage(with: imgUrl)
+            
             if errorMessage != nil {
                 SVProgressHUD.showError(withStatus: errorMessage!)
             } else {
