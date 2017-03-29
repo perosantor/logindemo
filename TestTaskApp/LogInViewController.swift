@@ -65,6 +65,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
         field?.autocorrectionType = .no
         field?.spellCheckingType = .no
+        field?.font = UIFont(name: Constants.Font.RobotoLight, size: 18)
         
         if (field == self.textFieldEmail) {
             field?.returnKeyType = .next

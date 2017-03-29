@@ -23,5 +23,6 @@ struct Constants {
     struct StoryboardID {
         static let LogInVC = "idLogInViewController"
         static let DetailsVC = "idDetailsViewController"
+        static let NavigationC = "idNavigationController"
     }
 }

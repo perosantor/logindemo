@@ -13,28 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let token = UserDefaults.standard.object(forKey: Constants.Keys.AccessToken) as? String ?? nil
-        print("TOKEN: \(token)")
-        
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let initialViewController:UIViewController
-        
-        if token == nil {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.StoryboardID.LogInVC)
-        } else {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: Constants.StoryboardID.DetailsVC)
-        }
-        
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
-        
-        
+        self.setInitialViewController()
         
         return true
     }
@@ -61,6 +43,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    //MARK: - Utilities
+    
+    private func setInitialViewController() {
+        let token = UserDefaults.standard.object(forKey: Constants.Keys.AccessToken) as? String ?? nil
+        print("TOKEN: \(token)")
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let initialViewController:UIViewController
+        let identifier: String
+        if token == nil {
+            identifier = Constants.StoryboardID.LogInVC
+        } else {
+            identifier = Constants.StoryboardID.NavigationC
+        }
+        initialViewController = storyboard.instantiateViewController(withIdentifier: identifier)
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+    }
 
 }
 
