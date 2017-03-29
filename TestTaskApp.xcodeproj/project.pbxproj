@@ -20,6 +20,8 @@
 		08B944901E893F74001B201B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08B9448D1E893F74001B201B /* Roboto-Regular.ttf */; };
 		08B944921E893FBA001B201B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B944911E893FBA001B201B /* Constants.swift */; };
 		08B944991E8B9D52001B201B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B944981E8B9D52001B201B /* DetailsViewController.swift */; };
+		08B9449B1E8BC2B9001B201B /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B9449A1E8BC2B9001B201B /* Restaurant.swift */; };
+		08B9449E1E8BC628001B201B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B9449D1E8BC628001B201B /* Utilities.swift */; };
 		20B80987EDFCE597AC708EC7 /* Pods_TestTaskAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60B5E91DF46261A9DFAD974 /* Pods_TestTaskAppTests.framework */; };
 		331A812D86531BC8DF7F8843 /* Pods_TestTaskAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BBD2ED64F865F12D569BE1E /* Pods_TestTaskAppUITests.framework */; };
 		B894F6D354E11A034C7987E9 /* Pods_TestTaskApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB6F29DC03A1C37594BFFD8 /* Pods_TestTaskApp.framework */; };
@@ -62,6 +64,8 @@
 		08B9448D1E893F74001B201B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		08B944911E893FBA001B201B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		08B944981E8B9D52001B201B /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		08B9449A1E8BC2B9001B201B /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		08B9449D1E8BC628001B201B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0B55A31086BD46A631DC8E1B /* Pods-TestTaskApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTaskApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestTaskApp/Pods-TestTaskApp.release.xcconfig"; sourceTree = "<group>"; };
 		0DB6F29DC03A1C37594BFFD8 /* Pods_TestTaskApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTaskApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		365CE40CE19B61A34B98AC33 /* Pods-TestTaskAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTaskAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestTaskAppUITests/Pods-TestTaskAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				08B944951E89497E001B201B /* Resources */,
 				08B944961E89498D001B201B /* Services */,
 				08B944971E894994001B201B /* Helpers */,
+				08B9449C1E8BC2BF001B201B /* Models */,
 			);
 			path = TestTaskApp;
 			sourceTree = "<group>";
@@ -196,8 +201,17 @@
 			isa = PBXGroup;
 			children = (
 				08B944911E893FBA001B201B /* Constants.swift */,
+				08B9449D1E8BC628001B201B /* Utilities.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		08B9449C1E8BC2BF001B201B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				08B9449A1E8BC2B9001B201B /* Restaurant.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		11C836F29BDEDEACE66A59A2 /* Pods */ = {
@@ -512,6 +526,8 @@
 			files = (
 				08B9445E1E890CE1001B201B /* LogInViewController.swift in Sources */,
 				08B9445C1E890CE1001B201B /* AppDelegate.swift in Sources */,
+				08B9449E1E8BC628001B201B /* Utilities.swift in Sources */,
+				08B9449B1E8BC2B9001B201B /* Restaurant.swift in Sources */,
 				08B9448A1E893E2D001B201B /* CommunicationService.swift in Sources */,
 				08B944921E893FBA001B201B /* Constants.swift in Sources */,
 				08B944991E8B9D52001B201B /* DetailsViewController.swift in Sources */,

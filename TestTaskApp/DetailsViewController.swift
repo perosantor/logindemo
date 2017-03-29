@@ -7,14 +7,28 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        SVProgressHUD.show()
+        CommunicationService.sharedInstace.fetchRestaurantInformation { (restaurant, errorMessage) in
+            
+            if errorMessage != nil {
+                SVProgressHUD.showError(withStatus: errorMessage!)
+            } else {
+                SVProgressHUD.dismiss()
+                if restaurant != nil {
+                    
+                }
+            }
+        }
         // Do any additional setup after loading the view.
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

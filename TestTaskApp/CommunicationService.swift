@@ -70,4 +70,60 @@ struct CommunicationService {
         
         
     }
+    
+    func fetchRestaurantInformation(completion: @escaping (_ response:Restaurant?, _ errorMessage:String?) -> ()) {
+        if Reachability.init()?.currentReachabilityStatus == .notReachable {
+            completion(nil, "No Internet access")
+        } else {
+            if let token:String = Utilities.getAccessToken() {
+                let baseURL = "https://usemenu.com/playground/public/api/v2/restaurant/info?app_version=2.7.1"
+                let jsonBody: [String: Any] = ["table_beacon": ["major" : "5", "minor" : "1"],
+                                               "access_token": token]
+                
+                let jsonBodyData = try? JSONSerialization.data(withJSONObject: jsonBody)
+                var request = URLRequest(url: URL(string: baseURL)!)
+                request.httpMethod = "POST"
+                request.httpBody = jsonBodyData
+                
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    // check for fundamental networking error
+                    guard let data = data, error == nil else {
+                        print("error=\(error)")
+                        completion(nil, "Error")
+                        return
+                    }
+                    
+                    do {
+                        if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                            
+                            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                                // check for http errors
+                                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                                print("response = \(response)")
+                                
+                                let message = json["message"] as? String
+                                completion(nil, message)
+                            } else {
+                                let name = json["name"] as? String
+                                let intro = json["intro"] as? String
+                                let opened = json["is_open"] as? String
+                                let welcomeMessage = json["welcome_message"] as? String
+                                
+                                completion(Restaurant.init(name: name, intro: intro, opened: opened, welcomeMessage: welcomeMessage), nil)
+                            }
+                            
+                            let responseString = String(data: data, encoding: .utf8)
+                            print("responseString = \(responseString)")
+                        }
+                    } catch {
+                        print("Error deserializing JSON: \(error)")
+                        completion(nil, "Error")
+                    }
+                }
+                task.resume()
+            } else {
+                completion(nil, "Error, please try and log in again")
+            }
+        }
+    }
 }
