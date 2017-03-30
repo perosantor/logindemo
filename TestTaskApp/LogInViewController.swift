@@ -175,18 +175,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             //if input is valid
             SVProgressHUD.show()
             CommunicationService.sharedInstace.logInWith(email: email, password: password) {
-                (response: String?, succeeded) in
-                if succeeded {
+                (token: String?, errorMessage: String?) in
+                if errorMessage == nil && token != nil {
                     SVProgressHUD.showSuccess(withStatus: "Logged In")
                     //access_token is obtained, save it and load next screen
-                    if (response != nil) {
-                        Utilities.saveAccessToken(response!)
-                        DispatchQueue.main.sync {
-                            self.performSegue(withIdentifier: "showDetailsVC", sender: nil)
-                        }
+                    Utilities.saveAccessToken(token!)
+                    DispatchQueue.main.sync {
+                        self.performSegue(withIdentifier: "showDetailsVC", sender: nil)
                     }
                 } else {
-                    SVProgressHUD.showError(withStatus: response)
+                    SVProgressHUD.showError(withStatus: errorMessage)
                 }
             }
         }
