@@ -16,7 +16,7 @@ struct Constants {
         static let RobotoMedium = "Roboto-Medium"
     }
     
-    struct Keys {
+    struct Key {
         static let AccessToken = "access_token"
     }
     
@@ -25,4 +25,6 @@ struct Constants {
         static let DetailsVC = "idDetailsViewController"
         static let NavigationC = "idNavigationController"
     }
+    
+    
 }

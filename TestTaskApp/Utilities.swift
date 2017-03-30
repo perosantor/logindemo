@@ -11,11 +11,15 @@ import UIKit
 class Utilities: NSObject {
 
     class func getAccessToken() -> String? {
-        return UserDefaults.standard.object(forKey: Constants.Keys.AccessToken) as? String ?? nil
+        return UserDefaults.standard.object(forKey: Constants.Key.AccessToken) as? String ?? nil
+    }
+    
+    class func saveAccessToken(_ token:String) {
+        UserDefaults.standard.set(token, forKey: Constants.Key.AccessToken)
     }
     
     class func removeAccessToken() {
-        UserDefaults.standard.removeObject(forKey: Constants.Keys.AccessToken)
+        UserDefaults.standard.removeObject(forKey: Constants.Key.AccessToken)
     }
     
 }

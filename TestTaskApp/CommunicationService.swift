@@ -54,21 +54,9 @@ struct CommunicationService {
                     print("Error deserializing JSON: \(error)")
                     completion("Error", false)
                 }
-                
-                //responseString = Optional("{\"message\":\"Restaurant beacon not found\",\"status_code\":500}")
-//                {
-//                    "access_token" : "64cdfb62690f56cdc3c06266157e447580e8a4a4",
-//                    "favorites" : {   "items": [],
-//                                      "restaurants": []    }
-//                }
-//                responseString = Optional("{\"message\":\"We weren\'t able to find an account with the email address you entered. Please 
-                //check your email address and try again.\",\"status_code\":500}")
-                
             }
             task.resume()
         }
-        
-        
     }
     
     func fetchRestaurantInformation(completion: @escaping (_ response:Restaurant?, _ errorMessage:String?) -> ()) {

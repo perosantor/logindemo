@@ -40,21 +40,19 @@ class DetailsViewController: UIViewController {
         self.constraintImageViewHeight.constant = UIScreen.main.bounds.width * 2/3
         
         SVProgressHUD.show()
-        CommunicationService.sharedInstace.fetchRestaurantInformation { (restaurant, errorMessage) in
-            
+        CommunicationService.sharedInstace.fetchRestaurantInformation {
+            (restaurant, errorMessage) in
             if errorMessage != nil {
                 SVProgressHUD.showError(withStatus: errorMessage!)
             } else {
                 SVProgressHUD.dismiss()
                 DispatchQueue.main.sync {
                     if (restaurant != nil) {
-                        self.updateData(restaurant: restaurant!)
+                        self.updateScreen(restaurant: restaurant!)
                     }
                 }
-                
             }
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,33 +73,19 @@ class DetailsViewController: UIViewController {
     
     //MARK: - Utilities
     
-    func updateData(restaurant:Restaurant) {
+    
+    func updateScreen(restaurant:Restaurant) {
         self.labelWelcomeMessage.text = restaurant.welcomeMessage
         self.labelIntro.text = restaurant.intro
         self.labelName.text = restaurant.name
-        let status:String
+        var status = "Closed"
         if restaurant.is_open {
             status = "Opened"
-        } else {
-            status = "Closed"
         }
         self.labelOpenedStatus.text = status
-        
-        //test
-        //let img = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR8UiOrCXg_pwp-fL4U8ynAiGKjMG5tOPK4XE3ffYzaf6uetsSbdg"
         if let url = restaurant.thumbnailImageUrl {
             self.imageViewThumbnail.sd_setImage(with: URL(string: url))
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

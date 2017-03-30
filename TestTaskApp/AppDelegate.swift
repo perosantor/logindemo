@@ -46,10 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: - Utilities
     
+    
     public func setInitialViewController() {
-        let token = UserDefaults.standard.object(forKey: Constants.Keys.AccessToken) as? String ?? nil
-        print("TOKEN: \(token)")
-        
+        let token = Utilities.getAccessToken()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         

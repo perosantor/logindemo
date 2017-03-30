@@ -38,7 +38,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                                                 action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
-        
         SVProgressHUD.setFont(UIFont(name: Constants.Font.RobotoLight, size: 15))
     }
     
@@ -142,9 +141,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let nextTage = textField.tag + 1;
+        let nextTag = textField.tag + 1;
         // Try to find next responder
-        let nextResponder=textField.superview?.viewWithTag(nextTage) as UIResponder!
+        let nextResponder = textField.superview?.viewWithTag(nextTag) as UIResponder!
         
         if (nextResponder != nil) {
             // Found next responder, so set it.
@@ -167,24 +166,25 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let email = self.textFieldEmail.text!
         let password = self.textFieldPassword.text!
         
+        //validate user input
         if email.isEmpty {
             SVProgressHUD.showInfo(withStatus: "Email field is empty")
         } else if password.isEmpty {
             SVProgressHUD.showInfo(withStatus: "Password field is empty")
         } else {
+            //if input is valid
             SVProgressHUD.show()
             CommunicationService.sharedInstace.logInWith(email: email, password: password) {
                 (response: String?, succeeded) in
                 if succeeded {
-                    print("Returned value of access token: \(response)")
                     SVProgressHUD.showSuccess(withStatus: "Logged In")
                     //access_token is obtained, save it and load next screen
-                    UserDefaults.standard.set(response, forKey: Constants.Keys.AccessToken)
-                    
-                    DispatchQueue.main.sync {
-                        self.performSegue(withIdentifier: "showDetailsVC", sender: nil)
+                    if (response != nil) {
+                        Utilities.saveAccessToken(response!)
+                        DispatchQueue.main.sync {
+                            self.performSegue(withIdentifier: "showDetailsVC", sender: nil)
+                        }
                     }
-                    
                 } else {
                     SVProgressHUD.showError(withStatus: response)
                 }
