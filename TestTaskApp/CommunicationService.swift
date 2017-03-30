@@ -84,6 +84,8 @@ struct CommunicationService {
                 let jsonBodyData = try? JSONSerialization.data(withJSONObject: jsonBody)
                 var request = URLRequest(url: URL(string: baseURL)!)
                 request.httpMethod = "POST"
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                //request.addValue("application/json", forHTTPHeaderField: "Accept")
                 request.httpBody = jsonBodyData
                 
                 let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -105,12 +107,24 @@ struct CommunicationService {
                                 let message = json["message"] as? String
                                 completion(nil, message)
                             } else {
-                                let name = json["name"] as? String
-                                let intro = json["intro"] as? String
-                                let opened = json["is_open"] as? String
-                                let welcomeMessage = json["welcome_message"] as? String
+                            
+                                var name:String?
+                                var intro:String?
+                                var is_open:Bool = false
+                                var welcomeMessage:String?
+                                var thumbnailImageUrl:String?
                                 
-                                completion(Restaurant.init(name: name, intro: intro, opened: opened, welcomeMessage: welcomeMessage), nil)
+                                if let restaurant = json["restaurant"] as? [String: Any] {
+                                    name = restaurant["name"] as? String
+                                    intro = restaurant["intro"] as? String
+                                    is_open = restaurant["is_open"] as! Bool
+                                    welcomeMessage = restaurant["welcome_message"] as? String
+                                    if let images = restaurant["images"] as? [String: Any] {
+                                        thumbnailImageUrl = images["thumbnail_medium"] as? String
+                                    }
+                                }
+                          
+                                completion(Restaurant.init(name: name, intro: intro, is_open: is_open, welcomeMessage: welcomeMessage, thumbnailImageUrl: thumbnailImageUrl), nil)
                             }
                             
                             let responseString = String(data: data, encoding: .utf8)

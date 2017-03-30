@@ -25,35 +25,33 @@ class DetailsViewController: UIViewController {
     
     @IBOutlet weak var constraintImageViewHeight: NSLayoutConstraint!
     
+    
     //MARK: - Lifecycle
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.setUp(label: labelName)
-        self.setUp(label: labelIntro)
-        self.setUp(label: labelOpenedStatus)
-        self.setUp(label: labelWelcomeMessage)
+        labelName.font = UIFont(name: Constants.Font.RobotoLight, size: 18)
+        labelIntro.font = UIFont(name: Constants.Font.RobotoLight, size: 18)
+        labelWelcomeMessage.font = UIFont(name: Constants.Font.RobotoLight, size: 17)
+        labelOpenedStatus.font = UIFont(name: Constants.Font.RobotoLight, size: 18)
         
         self.constraintImageViewHeight.constant = UIScreen.main.bounds.width * 2/3
         
         SVProgressHUD.show()
         CommunicationService.sharedInstace.fetchRestaurantInformation { (restaurant, errorMessage) in
             
-            //test
-            let img = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR8UiOrCXg_pwp-fL4U8ynAiGKjMG5tOPK4XE3ffYzaf6uetsSbdg"
-            let imgUrl = URL(string: img)
-            self.imageViewThumbnail.sd_setImage(with: imgUrl)
-            
             if errorMessage != nil {
                 SVProgressHUD.showError(withStatus: errorMessage!)
             } else {
                 SVProgressHUD.dismiss()
-                if restaurant != nil {
-                    
+                DispatchQueue.main.sync {
+                    if (restaurant != nil) {
+                        self.updateData(restaurant: restaurant!)
+                    }
                 }
+                
             }
         }
         // Do any additional setup after loading the view.
@@ -77,12 +75,24 @@ class DetailsViewController: UIViewController {
     
     //MARK: - Utilities
     
-    
-    private func setUp(label: UILabel) {
-        label.font = UIFont(name: Constants.Font.RobotoLight, size: 18)
+    func updateData(restaurant:Restaurant) {
+        self.labelWelcomeMessage.text = restaurant.welcomeMessage
+        self.labelIntro.text = restaurant.intro
+        self.labelName.text = restaurant.name
+        let status:String
+        if restaurant.is_open {
+            status = "Opened"
+        } else {
+            status = "Closed"
+        }
+        self.labelOpenedStatus.text = status
         
+        //test
+        //let img = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR8UiOrCXg_pwp-fL4U8ynAiGKjMG5tOPK4XE3ffYzaf6uetsSbdg"
+        if let url = restaurant.thumbnailImageUrl {
+            self.imageViewThumbnail.sd_setImage(with: URL(string: url))
+        }
     }
-    
     
     /*
     // MARK: - Navigation

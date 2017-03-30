@@ -11,13 +11,15 @@ import UIKit
 class Restaurant: NSObject {
     let name: String?
     let intro: String?
-    let opened: String?
+    let is_open: Bool
     let welcomeMessage: String?
+    let thumbnailImageUrl: String?
     
-    init(name: String?, intro: String?, opened: String?, welcomeMessage: String?) {
+    init(name: String?, intro: String?, is_open: Bool, welcomeMessage: String?, thumbnailImageUrl: String?) {
         self.name = name
         self.intro = intro
-        self.opened = opened
+        self.is_open = is_open
         self.welcomeMessage = welcomeMessage
+        self.thumbnailImageUrl = thumbnailImageUrl
     }
 }
