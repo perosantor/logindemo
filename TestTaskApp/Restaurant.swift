@@ -22,4 +22,30 @@ class Restaurant: NSObject {
         self.welcomeMessage = welcomeMessage
         self.thumbnailImageUrl = thumbnailImageUrl
     }
+    
+    convenience init?(withJson json: [String:Any]?) {
+        if json != nil {
+            if let restaurant = json?["restaurant"] as? [String: Any] {
+                let name = restaurant["name"] as? String
+                let intro = restaurant["intro"] as? String
+                let is_open = restaurant["is_open"] as! Bool
+                let welcomeMessage = restaurant["welcome_message"] as? String
+                var thumbnailImageUrl: String?
+                if let images = restaurant["images"] as? [String: Any] {
+                    thumbnailImageUrl = images["thumbnail_medium"] as? String
+                }
+    
+                self.init(name: name,
+                          intro: intro,
+                          is_open: is_open,
+                          welcomeMessage: welcomeMessage,
+                          thumbnailImageUrl: thumbnailImageUrl)
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
 }

@@ -24,42 +24,32 @@ struct CommunicationService {
                 completion(token, nil)
             } else if json == nil && errorMessage != nil {
                 completion(nil, errorMessage)
+            } else {
+                completion(nil, "Error")
             }
         }
     }
     
+    
     func fetchRestaurantInformation(completion: @escaping (_ response:Restaurant?, _ errorMessage:String?) -> ()) {
         
         if let token:String = Utilities.getAccessToken() {
-            print(token)
             let baseURL = "https://usemenu.com/playground/public/api/v2/restaurant/info?app_version=2.7.1"
+            //hardcoded test data
             let jsonBody: [String: Any] = ["table_beacon": ["major": 5, "minor": 1],
                                            "access_token": token]
         
-            
             self.networkRequest(requestUrl: baseURL, requestBody: jsonBody) { (json, errorMessage) in
-                if json != nil {
-                    if let restaurant = json?["restaurant"] as? [String: Any] {
-                        let name = restaurant["name"] as? String
-                        let intro = restaurant["intro"] as? String
-                        let is_open = restaurant["is_open"] as! Bool
-                        let welcomeMessage = restaurant["welcome_message"] as? String
-                        var thumbnailImageUrl: String?
-                        if let images = restaurant["images"] as? [String: Any] {
-                            thumbnailImageUrl = images["thumbnail_medium"] as? String
-                        }
-                        
-                        let restaurantInfo = Restaurant.init(name: name, intro: intro, is_open: is_open, welcomeMessage: welcomeMessage, thumbnailImageUrl: thumbnailImageUrl)
-                        completion(restaurantInfo, nil)
-                        
-                    } else {
-                         completion(nil, "No data for this restaurant found")
-                    }
-                } else if json == nil && errorMessage != nil {
+                if errorMessage != nil {
                     completion(nil, errorMessage)
+                } else {
+                    if let restaurant = Restaurant.init(withJson: json) {
+                        completion(restaurant, nil)
+                    } else {
+                        completion(nil, "Error")
+                    }
                 }
             }
-
         } else {
             completion(nil, "Error. Please Log in again.")
         }
@@ -87,21 +77,13 @@ struct CommunicationService {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                         
                         if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                            // check for http errors
-//                            print("statusCode should be 200, but is \(httpStatus.statusCode)")
-//                            print("response = \(response)")
-//                            
                             let message = json["message"] as? String
                             completion(nil, message)
                         } else {
                             completion(json, nil)
                         }
-                        
-//                        let responseString = String(data: data, encoding: .utf8)
-//                        print("responseString = \(responseString)")
                     }
                 } catch {
-                    print("Error deserializing JSON: \(error)")
                     completion(nil, "Error")
                 }
             }
